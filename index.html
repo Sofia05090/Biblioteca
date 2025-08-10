@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Biblioteca — Resúmenes</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<header class="app-header">
+  <div class="header-inner">
+    <h1>📚 Biblioteca - Resúmenes</h1>
+    <p class="subtitle">Versiones resumidas — Demo offline</p>
+  </div>
+</header>
+
+<main id="main" class="main-content">
+  <section class="gallery" id="bookGallery" aria-label="Galería de libros"></section>
+</main>
+
+<!-- Modal de detalle -->
+<div class="modal" id="bookModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="modal-card" role="document" id="modalCard">
+    <button class="modal-close" id="modalClose" aria-label="Cerrar">&times;</button>
+    <img id="modalCover" src="" alt="Portada" class="modal-cover">
+    <div class="modal-body">
+      <h2 id="modalTitle">Título</h2>
+      <p class="author" id="modalAuthor">Autor</p>
+      <p class="desc" id="modalDescription">Descripción breve...</p>
+      <div class="modal-actions">
+        <button id="readBookBtn" class="btn primary">Leer</button>
+        <button id="quizBtn" class="btn">Hacer Quiz</button>
+        <a id="downloadCover" class="btn" download>Descargar portada</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Vista lectura -->
+<div id="readingView" class="reading-view" aria-hidden="true">
+  <div class="reading-topbar">
+    <button id="closeReading" class="btn icon-btn" aria-label="Volver">
+      <span class="material-icons">arrow_back</span> Volver
+    </button>
+    <div class="reading-title" id="readingTitle">Leyendo...</div>
+  </div>
+  <article id="bookContent" class="book-content" tabindex="0"></article>
+</div>
+
+<!-- Quiz view -->
+<div id="quizView" class="reading-view" aria-hidden="true">
+  <div class="reading-topbar">
+    <button id="closeQuiz" class="btn icon-btn"><span class="material-icons">arrow_back</span> Volver</button>
+    <div class="reading-title" id="quizTitle">Quiz</div>
+  </div>
+  <div id="quizContent" class="book-content"></div>
+</div>
+
+<nav class="bottom-nav" role="navigation" aria-label="Navegación principal">
+  <button class="nav-btn active" data-section="gallery" title="Biblioteca">
+    <span class="material-icons">menu_book</span><small>Libros</small>
+  </button>
+  <button class="nav-btn" data-section="resumenes" title="Resúmenes">
+    <span class="material-icons">edit</span><small>Resumen</small>
+  </button>
+  <button class="nav-btn" data-section="dibujos" title="Dibujos">
+    <span class="material-icons">brush</span><small>Dibujo</small>
+  </button>
+  <button class="nav-btn" data-section="quizzes" title="Quizzes">
+    <span class="material-icons">quiz</span><small>Quiz</small>
+  </button>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>
