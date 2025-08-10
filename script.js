@@ -1,4 +1,3 @@
-
 const books = [
   {
     id: 'pride',
@@ -63,6 +62,9 @@ const quizView = document.getElementById('quizView');
 const quizContent = document.getElementById('quizContent');
 const quizTitle = document.getElementById('quizTitle');
 const closeQuiz = document.getElementById('closeQuiz');
+
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
 
 let currentBook = null;
 
@@ -146,5 +148,41 @@ closeQuiz.addEventListener('click', ()=>{ quizView.style.display='none'; });
 document.addEventListener('keydown',(e)=>{
   if(e.key==='Escape'){ if(modal.style.display==='block') closeModal(); if(readingView.style.display==='block') closeReading.click(); if(quizView.style.display==='block') closeQuiz.click(); }
 });
+
+// Theme toggle functionality
+function updateThemeIcon(theme) {
+    const iconSpan = themeToggle.querySelector('.material-icons');
+    if (theme === 'dark-theme') {
+        iconSpan.textContent = 'light_mode';
+        themeToggle.title = 'Modo claro';
+    } else {
+        iconSpan.textContent = 'dark_mode';
+        themeToggle.title = 'Modo oscuro';
+    }
+}
+
+themeToggle.addEventListener('click', () => {
+    if (body.classList.contains('light-theme')) {
+        body.classList.remove('light-theme');
+        body.classList.add('dark-theme');
+        updateThemeIcon('dark-theme');
+    } else {
+        body.classList.remove('dark-theme');
+        body.classList.add('light-theme');
+        updateThemeIcon('light-theme');
+    }
+});
+
+// Set initial theme and icon based on system preference
+const isSystemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+if (isSystemDarkMode) {
+    body.classList.remove('light-theme');
+    body.classList.add('dark-theme');
+    updateThemeIcon('dark-theme');
+} else {
+    body.classList.remove('dark-theme');
+    body.classList.add('light-theme');
+    updateThemeIcon('light-theme');
+}
 
 renderGallery();
